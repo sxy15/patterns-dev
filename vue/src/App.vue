@@ -1,5 +1,9 @@
 <script setup>
-  import ToggleComponent from './renderless-components/ToggleComponent.vue'
+import { ref } from "vue";
+import ToggleComponent from './renderless-components/ToggleComponent.vue'
+import { AsyncModal } from "./async-modal/AsyncModal";
+
+const showModal = ref(false);
 </script>
 
 <template>
@@ -36,6 +40,11 @@
       </button>
     </div>
   </ToggleComponent>
+
+
+  <button id="show-modal" @click="showModal = true">Show Modal</button>
+
+  <AsyncModal v-if="showModal" :show="showModal" @close="showModal = false" />
 </template>
 
 <style scoped>
